@@ -57,7 +57,7 @@ function Chat({ socket, username, room }) {
           })}
         </ScrollToBottom>
       </div>
-      <div className="chat-footer">
+      <div className="msger-inputarea">
         <input
           type="text"
           value={currentMessage}
@@ -69,7 +69,9 @@ function Chat({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <button onClick={sendMessage}>&#9658;</button>
+        <button type="submit" class="msger-send-btn" onClick={sendMessage}>
+          &#9658;
+        </button>
       </div>
     </div>
   );
