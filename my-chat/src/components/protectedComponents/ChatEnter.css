@@ -196,6 +196,7 @@ span {
   padding: 10px;
   border-top: var(--border);
   background: #eee;
+  border-radius: 10px;
 }
 .msger-inputarea * {
   padding: 10px;
@@ -217,4 +218,13 @@ span {
 }
 .msger-send-btn:hover {
   background: rgb(0, 180, 50);
+}
+.msger-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-bottom: var(--border);
+  background: #eee;
+  color: #666;
+  border-radius: 10px;
 }
