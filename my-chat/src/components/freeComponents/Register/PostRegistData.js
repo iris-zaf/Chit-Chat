@@ -7,6 +7,7 @@ const PostRegistData = async (data) => {
     return true;
   } catch (error) {
     alert("Unable to Register...");
+
     console.log(error);
     return false;
   }

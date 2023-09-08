@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import PostRegistData from "./PostRegistData";
@@ -13,11 +14,13 @@ import {
   MDBInput,
   MDBIcon,
 } from "mdb-react-ui-kit";
-
-const RegistrationForm = () => {
+import ChatOrange from "./chat-orange.png";
+import "../Register/Register.css";
+import { AuthContext } from "../../../context/AuthContext";
+const RegistrationForm = (props) => {
   const navigate = useNavigate();
+
   const {
-    register,
     handleSubmit,
     reset,
     formState: { errors },
@@ -31,36 +34,58 @@ const RegistrationForm = () => {
 
     const res = await PostRegistData(userData);
     if (res) {
-      navigate("/login");
+      props.onRegister(true);
+      navigate("/");
     }
   };
-
+  const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <MDBContainer fluid>
-        <MDBCard className="text-black m-5" style={{ borderRadius: "25px" }}>
-          <MDBCardBody>
+        <MDBCard
+          className="text-black m-5 loginContainer"
+          style={{ borderRadius: "25px" }}
+        >
+          <MDBCardBody
+            style={{ backgroundColor: "white", borderRadius: "1em" }}
+          >
             <MDBRow>
               <MDBCol
                 md="10"
                 lg="6"
                 className="order-2 order-lg-1 d-flex flex-column align-items-center"
               >
-                <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                  Sign up
+                <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                  Create an account
                 </p>
+                <div className="d-flex flex-row align-items-center mb-4">
+                  <MDBIcon fas icon="envelope me-3" size="lg" />
+                  <MDBInput
+                    label="Your Name"
+                    id="form2"
+                    type="text"
+                    onChange={(e) =>
+                      updateRegisterInfo({
+                        ...registerInfo,
+                        name: e.target.value,
+                      })
+                    }
+                  />
+
+                  <p style={{ color: "red" }}>At least 3 characters</p>
+                </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="envelope me-3" size="lg" />
                   <MDBInput
                     label="Your Email"
                     id="form2"
                     type="email"
-                    {...register("email", {
-                      required: "Email is required.",
-                      minLength: {
-                        pattern: /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/,
-                      },
-                    })}
+                    onChange={(e) =>
+                      updateRegisterInfo({
+                        ...registerInfo,
+                        email: e.target.value,
+                      })
+                    }
                   />
                   {errors.email && (
                     <p className="errorMsg">{errors.email.message}</p>
@@ -73,13 +98,12 @@ const RegistrationForm = () => {
                     label="Password"
                     id="form3"
                     type="password"
-                    {...register("password", {
-                      required: "Password is required.",
-                      minLength: {
-                        value: 6,
-                        message: "Password should be at-least 5 characters.",
-                      },
-                    })}
+                    onChange={(e) =>
+                      updateRegisterInfo({
+                        ...registerInfo,
+                        password: e.target.value,
+                      })
+                    }
                   />
 
                   {errors.password && (
@@ -92,10 +116,7 @@ const RegistrationForm = () => {
                 </MDBBtn>
                 <h5 className="small text-muted">
                   {" "}
-                  You already have an account? <Link to="/login">
-                    {" "}
-                    Login
-                  </Link>{" "}
+                  Already have an account? <Link to="/login"> Login</Link>{" "}
                 </h5>
               </MDBCol>
 
@@ -105,7 +126,8 @@ const RegistrationForm = () => {
                 className="order-1 order-lg-2 d-flex align-items-center"
               >
                 <MDBCardImage
-                  src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                  src={ChatOrange}
+                  style={{ borderRadius: "20px" }}
                   fluid
                 />
               </MDBCol>
