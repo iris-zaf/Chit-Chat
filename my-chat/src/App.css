@@ -5,6 +5,7 @@
 
   transform: translate(-50%, -50%);
 }
-.errorMsg {
-  color: #ff3c7e !important ;
+.error {
+  color: red;
+  font-size: 12px;
 }

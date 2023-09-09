@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import PostRegistData from "./PostRegistData";
@@ -17,30 +17,36 @@ import {
 import ChatOrange from "./chat-orange.png";
 import "../Register/Register.css";
 import { AuthContext } from "../../../context/AuthContext";
+
 const RegistrationForm = (props) => {
   const navigate = useNavigate();
 
   const {
     handleSubmit,
-    reset,
+
+    // reset,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (userData) => {
-    reset({
-      email: "",
-      password: "",
-    });
+  const onSubmit = async (data) => {
+    console.log("data", data);
+    // reset({
+    //   name: "",
+    //   email: "",
+    //   password: "",
+    // });
 
-    const res = await PostRegistData(userData);
+    const res = await PostRegistData(data);
     if (res) {
       props.onRegister(true);
       navigate("/");
     }
   };
   const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
+  console.log("registerInfo", registerInfo);
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(() => onSubmit(registerInfo))}>
+      {" "}
       <MDBContainer fluid>
         <MDBCard
           className="text-black m-5 loginContainer"
@@ -59,7 +65,7 @@ const RegistrationForm = (props) => {
                   Create an account
                 </p>
                 <div className="d-flex flex-row align-items-center mb-4">
-                  <MDBIcon fas icon="envelope me-3" size="lg" />
+                  <MDBIcon fas icon="user me-3" size="lg" />
                   <MDBInput
                     label="Your Name"
                     id="form2"
@@ -71,8 +77,6 @@ const RegistrationForm = (props) => {
                       })
                     }
                   />
-
-                  <p style={{ color: "red" }}>At least 3 characters</p>
                 </div>
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="envelope me-3" size="lg" />
