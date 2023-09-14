@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Register from "./components/freeComponents/Register/Register";
 import Login from "./components/freeComponents/Login/LoginForm";
 import Logout from "./components/protectedComponents/logout";
@@ -60,7 +60,7 @@ function App() {
               path="/logout"
               element={<Logout onLogout={handleUserState} />}
             />
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>
         </div>
       )}

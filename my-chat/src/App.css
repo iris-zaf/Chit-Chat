@@ -9,3 +9,12 @@
   color: red;
   font-size: 12px;
 }
+.save-button {
+  padding: 0 1rem;
+  border-radius: 1em;
+  background: linear-gradient(10deg, #edb0f0, #bb30c2);
+  color: white;
+}
+.save-button:hover {
+  cursor: pointer;
+}

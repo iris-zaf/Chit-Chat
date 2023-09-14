@@ -32,7 +32,7 @@ const LoginForm = (props) => {
     const result = await PostLoginData(userData);
     if (result) {
       props.onLogin(true);
-      navigate("/");
+      navigate("/chat");
     }
   };
 
