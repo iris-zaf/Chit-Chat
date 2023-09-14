@@ -10,13 +10,12 @@ export const AuthContextProvider = ({ children }) => {
     password: "",
   });
 
-  console.log("registerInfo", registerInfo);
-
+  console.log("User", user);
   useEffect(() => {
     const user = localStorage.getItem("User");
     setUser(JSON.parse(user));
   }, []);
-  console.log("User", user);
+
   const updateRegisterInfo = useCallback((info) => {
     setRegisterInfo(info);
   }, []);

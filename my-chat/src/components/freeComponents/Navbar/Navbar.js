@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   MDBNavbar,
   MDBContainer,
@@ -12,6 +12,7 @@ import {
 } from "mdb-react-ui-kit";
 const Navbar = ({ userState }) => {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
+
   return (
     <>
       {userState ? (
@@ -43,8 +44,10 @@ const Navbar = ({ userState }) => {
                   </Link>
                 </MDBNavbarItem>{" "}
               </MDBNavbarNav>{" "}
+              <MDBNavbarItem className="m-4" style={{ listStyle: "none" }}>
+                <span style={{ color: "white" }}></span>
+              </MDBNavbarItem>
             </MDBCollapse>{" "}
-            <span style={{ color: "white" }}>Charles</span>
           </MDBContainer>
         </MDBNavbar>
       ) : (
