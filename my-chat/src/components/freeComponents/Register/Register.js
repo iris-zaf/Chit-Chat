@@ -39,7 +39,7 @@ const RegistrationForm = (props) => {
     const res = await PostRegistData(data);
     if (res) {
       props.onRegister(true);
-      navigate("/");
+      navigate("/chat");
     }
   };
   const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
