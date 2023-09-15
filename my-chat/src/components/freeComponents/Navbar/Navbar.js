@@ -35,13 +35,11 @@ const Navbar = ({ userState }) => {
               </MDBNavbarToggler>
               <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
                 <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+                  <MDBNavbarItem className="m-4"></MDBNavbarItem>
                   <MDBNavbarItem className="m-4">
-                    <AnimatedButton />
-                  </MDBNavbarItem>
-                  <MDBNavbarItem className="m-4">
-                    <Link to="logout" className="text-light">
+                    {/* <Link to="logout" className="text-light">
                       Log out
-                    </Link>
+                    </Link> */}
                   </MDBNavbarItem>{" "}
                 </MDBNavbarNav>{" "}
                 <MDBNavbarItem className="m-4" style={{ listStyle: "none" }}>

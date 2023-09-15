@@ -60,7 +60,7 @@ function App() {
               path="/logout"
               element={<Logout onLogout={handleUserState} />}
             />
-            {/* <Route path="*" element={<Navigate to="/" />} /> */}
+            {/* <Route path="*" element={<Navigate   to="/" />} /> */}
           </Routes>
         </div>
       )}

@@ -18,3 +18,37 @@
 .save-button:hover {
   cursor: pointer;
 }
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: #000000e1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.modal {
+  /* using clamp instead of media queries here */
+  width: clamp(50%, 700px, 90%);
+  height: 70vh;
+  margin: 1em;
+  background-color: rgb(255 106 226 / 40%);
+  padding: 0 2rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.modal-text li img {
+  width: 4em;
+  border: 2px solid white;
+  border-radius: 8px;
+  margin: 5px;
+}
+.modal-text li img:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
