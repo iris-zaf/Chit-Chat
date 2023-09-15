@@ -5,22 +5,28 @@ import Fox from "./fox.png";
 import Chameo from "./chameleon.png";
 import Owl from "./owl.png";
 import Whale from "./whale.png";
-const dropIn = {
+const flip = {
   hidden: {
-    y: "-100vh",
+    transform: "scale(0) rotateX(-360deg)",
     opacity: 0,
-  },
-  visible: {
-    y: "0",
-    opacity: 1,
     transition: {
-      duration: 0.1,
-      type: "spring",
-      damping: 25,
-      stiffness: 500,
+      delay: 0.3,
     },
   },
-  exit: { y: "100vh", opacity: 0 },
+  visible: {
+    transform: " scale(1) rotateX(0deg)",
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+    },
+  },
+  exit: {
+    transform: "scale(0) rotateX(360deg)",
+    opacity: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
 };
 function Modal({ handleClose, text }) {
   return (
@@ -28,7 +34,7 @@ function Modal({ handleClose, text }) {
       <motion.div
         onClick={(e) => e.stopPropagation()}
         className="modal orange-gradient"
-        variants={dropIn}
+        variants={flip}
         initial="hidden"
         animate="visible"
         exit="exit"
