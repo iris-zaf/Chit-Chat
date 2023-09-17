@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate, Link } from "react-router-dom";
 import PostRegistData from "./PostRegistData";
@@ -18,10 +18,10 @@ import ChatOrange from "./chat-orange.png";
 import "../Register/Register.css";
 import { AuthContext } from "../../../context/AuthContext";
 import User from "./user.png";
-import ConvertToBase64 from "./Convert";
+// import ConvertToBase64 from "./Convert";
 const RegistrationForm = (props) => {
   const navigate = useNavigate();
-  const [file, setFile] = useState();
+  // const [file, setFile] = useState();
   const {
     handleSubmit,
 
@@ -43,10 +43,10 @@ const RegistrationForm = (props) => {
       navigate("/chat");
     }
   };
-  const onUpload = async (e) => {
-    const base64 = await ConvertToBase64();
-    setFile(base64);
-  };
+  // const onUpload = async (e) => {
+  //   const base64 = await ConvertToBase64();
+  //   setFile(base64);
+  // };
 
   const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
   console.log("registerInfo", registerInfo);

@@ -9,9 +9,8 @@ import {
 export const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }) => {
-  let token = localStorage.getItem("token");
   const [user, setUser] = useState(null);
-  const [isLoggedIn, setIsLoggedIn] = useState(!!token);
+
   const [registerInfo, setRegisterInfo] = useState({
     name: "",
     email: "",
@@ -34,8 +33,6 @@ export const AuthContextProvider = ({ children }) => {
         user,
         registerInfo,
         updateRegisterInfo,
-        isLoggedIn,
-        setIsLoggedIn,
       }}
     >
       {children}

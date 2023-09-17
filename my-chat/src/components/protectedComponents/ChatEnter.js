@@ -5,7 +5,6 @@ import { React, useState } from "react";
 import TextSpan from "./TextSpan";
 import "./balloons.mp4";
 import Chat from "./Chat";
-import { AnimatedButton } from "./AnimatedButton";
 
 //connecting to our backend
 const socket = io("http://localhost:3001");

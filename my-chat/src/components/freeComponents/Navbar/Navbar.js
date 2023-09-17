@@ -11,7 +11,7 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { AnimatedButton } from "../../protectedComponents/AnimatedButton";
-import { useAuth } from "../../../context/AuthContext";
+
 const Navbar = ({ userState }) => {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
 
