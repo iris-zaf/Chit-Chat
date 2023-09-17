@@ -9,7 +9,7 @@ import { AnimatedButton } from "./AnimatedButton";
 
 //connecting to our backend
 const socket = io("http://localhost:3001");
-function App() {
+function ChatEnter() {
   const [user, setAUser] = useState("");
   const [room, setRoom] = useState("");
 
@@ -38,7 +38,6 @@ function App() {
                 return <TextSpan key={index}>{letter}</TextSpan>;
               })}
             </div>
-            <AnimatedButton />
             <input
               type="text"
               onChange={(e) => setAUser(e.target.value)}
@@ -59,4 +58,4 @@ function App() {
   );
 }
 
-export default App;
+export default ChatEnter;

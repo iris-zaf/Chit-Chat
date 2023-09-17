@@ -10,12 +10,11 @@ import {
   MDBCardImage,
   MDBRow,
   MDBCol,
-  MDBIcon,
   MDBInput,
 } from "mdb-react-ui-kit";
 import Chats from "./chats.jpg";
 import "../Login/LoginForm.css";
-import Navbar from "../Navbar/Navbar";
+
 const LoginForm = (props) => {
   const navigate = useNavigate();
   const {
@@ -39,7 +38,6 @@ const LoginForm = (props) => {
 
   return (
     <>
-      <Navbar />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
           <MDBContainer className="my-5 ">

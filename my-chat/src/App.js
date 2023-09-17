@@ -6,11 +6,13 @@ import Logout from "./components/protectedComponents/logout";
 import Nav from "./components/freeComponents/Navbar/Navbar";
 import LandingPage from "./components/freeComponents/LandingPage/LandingPage";
 import "./App.css";
+
 import ChatEnter from "./components/protectedComponents/ChatEnter";
 function App() {
   let token = localStorage.getItem("token");
   const [isLoggedIn, setIsLoggedIn] = useState(!!token);
   const [loading, setLoading] = useState(false);
+
   const handleUserState = (state) => {
     setIsLoggedIn(state);
   };
@@ -48,6 +50,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LandingPage />} />
             <Route path="/chat" element={<ChatEnter />} />
+
             <Route
               path="/register"
               element={<Register onRegister={handleUserState} />}

@@ -17,10 +17,11 @@ import {
 import ChatOrange from "./chat-orange.png";
 import "../Register/Register.css";
 import { AuthContext } from "../../../context/AuthContext";
-
+import User from "./user.png";
+import ConvertToBase64 from "./Convert";
 const RegistrationForm = (props) => {
   const navigate = useNavigate();
-
+  const [file, setFile] = useState();
   const {
     handleSubmit,
 
@@ -42,6 +43,11 @@ const RegistrationForm = (props) => {
       navigate("/chat");
     }
   };
+  const onUpload = async (e) => {
+    const base64 = await ConvertToBase64();
+    setFile(base64);
+  };
+
   const { registerInfo, updateRegisterInfo } = useContext(AuthContext);
   console.log("registerInfo", registerInfo);
   return (
@@ -63,7 +69,11 @@ const RegistrationForm = (props) => {
               >
                 <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
                   Create an account
-                </p>
+                </p>{" "}
+                <label htmlFor="profile">
+                  <img src={User} alt="profile" style={{ width: "5em" }} />
+                </label>
+                <input type="file" id="profile" name="profile" />
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="user me-3" size="lg" />
                   <MDBInput
@@ -95,7 +105,6 @@ const RegistrationForm = (props) => {
                     <p className="errorMsg">{errors.email.message}</p>
                   )}
                 </div>
-
                 <div className="d-flex flex-row align-items-center mb-4">
                   <MDBIcon fas icon="lock me-3" size="lg" />
                   <MDBInput
@@ -114,7 +123,6 @@ const RegistrationForm = (props) => {
                     <p className="errorMsg">{errors.password.message}</p>
                   )}
                 </div>
-
                 <MDBBtn className="mb-4" size="lg" type="submit">
                   Register
                 </MDBBtn>

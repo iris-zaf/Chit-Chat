@@ -11,44 +11,50 @@ import {
   MDBCollapse,
 } from "mdb-react-ui-kit";
 import { AnimatedButton } from "../../protectedComponents/AnimatedButton";
+import { useAuth } from "../../../context/AuthContext";
 const Navbar = ({ userState }) => {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
 
   return (
     <>
       {userState ? (
-        <>
-          <MDBNavbar expand="lg" dark bgColor="dark">
-            <MDBContainer fluid>
-              <MDBNavbarBrand to="/" className="m-2 fs-1">
-                Chit-Chat
-              </MDBNavbarBrand>
-              <MDBNavbarToggler
-                type="button"
-                data-target="#navbarColor02"
-                aria-controls="navbarColor02"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                onClick={() => setShowNavColorSecond(!showNavColorSecond)}
-              >
-                <MDBIcon icon="bars" fas />
-              </MDBNavbarToggler>
-              <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
-                <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
-                  <MDBNavbarItem className="m-4"></MDBNavbarItem>
-                  <MDBNavbarItem className="m-4">
-                    {/* <Link to="logout" className="text-light">
-                      Log out
-                    </Link> */}
-                  </MDBNavbarItem>{" "}
-                </MDBNavbarNav>{" "}
-                <MDBNavbarItem className="m-4" style={{ listStyle: "none" }}>
-                  <span style={{ color: "white" }}></span>
+        <MDBNavbar
+          expand="lg"
+          dark
+          bgColor="dark"
+          style={{ zIndex: "1000", position: "relative" }}
+        >
+          <MDBContainer fluid>
+            <MDBNavbarBrand to="/" className="m-2 fs-1">
+              Chit - Chat
+            </MDBNavbarBrand>
+            <MDBNavbarToggler
+              type="button"
+              data-target="#navbarColor02"
+              aria-controls="navbarColor02"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+              onClick={() => setShowNavColorSecond(!showNavColorSecond)}
+            >
+              <MDBIcon icon="bars" fas />
+            </MDBNavbarToggler>
+            <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
+              <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
+                <MDBNavbarItem className="m-4">
+                  <Link to="/homePage" className="text-light">
+                    <AnimatedButton />
+                  </Link>
                 </MDBNavbarItem>
-              </MDBCollapse>{" "}
-            </MDBContainer>
-          </MDBNavbar>
-        </>
+
+                <MDBNavbarItem className="m-4">
+                  <Link to="/logout" className="text-light">
+                    Logout
+                  </Link>
+                </MDBNavbarItem>
+              </MDBNavbarNav>
+            </MDBCollapse>
+          </MDBContainer>
+        </MDBNavbar>
       ) : (
         <MDBNavbar expand="lg">
           <MDBContainer fluid>
