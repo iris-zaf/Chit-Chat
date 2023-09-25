@@ -10,11 +10,21 @@ import {
   MDBNavbarBrand,
   MDBCollapse,
 } from "mdb-react-ui-kit";
-import { AnimatedButton } from "../../protectedComponents/AnimatedButton";
+// import { AnimatedButton } from "../../protectedComponents/AnimatedButton";
 
 const Navbar = ({ userState }) => {
   const [showNavColorSecond, setShowNavColorSecond] = useState(false);
-
+  const [value, setValue] = useState("");
+  const options = [
+    { name: "owl", value: "🦉" },
+    { name: "cat", value: "🦊" },
+    { name: "frog", value: "🐸" },
+    { name: "tiger", value: "🐅" },
+    { name: "dolphin", value: "🐬" },
+  ];
+  function handleSelect(e) {
+    setValue(e.target.value);
+  }
   return (
     <>
       {userState ? (
@@ -41,9 +51,15 @@ const Navbar = ({ userState }) => {
             <MDBCollapse show={showNavColorSecond} navbar id="navbarColor02">
               <MDBNavbarNav className="me-auto mb-2 mb-lg-0">
                 <MDBNavbarItem className="m-4">
-                  <Link to="/homePage" className="text-light">
+                  {/* <Link to="/homePage" className="text-light">
                     <AnimatedButton />
-                  </Link>
+                  </Link> */}
+                  <h6 style={{ color: "white" }}>Select your avatar</h6>
+                  <select onChange={handleSelect}>
+                    {options.map((option) => (
+                      <option value={option.value}>{option.name}</option>
+                    ))}
+                  </select>
                 </MDBNavbarItem>
 
                 <MDBNavbarItem className="m-4">
@@ -52,6 +68,9 @@ const Navbar = ({ userState }) => {
                   </Link>
                 </MDBNavbarItem>
               </MDBNavbarNav>
+              <MDBNavbarItem style={{ listStyle: "none" }}>
+                {value}
+              </MDBNavbarItem>
             </MDBCollapse>
           </MDBContainer>
         </MDBNavbar>
