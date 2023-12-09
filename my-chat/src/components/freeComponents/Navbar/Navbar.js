@@ -69,7 +69,7 @@ const Navbar = ({ userState }) => {
                 </MDBNavbarItem>
               </MDBNavbarNav>
               <MDBNavbarItem style={{ listStyle: "none" }}>
-                {value}
+                <p>{value}</p>
               </MDBNavbarItem>
             </MDBCollapse>
           </MDBContainer>

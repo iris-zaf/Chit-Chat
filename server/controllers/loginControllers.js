@@ -25,7 +25,10 @@ const loginUser = async (req, res) => {
     }
 
     //else , Respond with a token
-    const token = jwt.sign({ id: user._id, email: user.email }, PRIVATE_KEY);
+    const token = jwt.sign(
+      { id: user._id, email: user.email, photoURL },
+      PRIVATE_KEY
+    );
     res.status(200).send(token);
   } catch (error) {
     res.status(500).send({ message: "Unable to Log in..." });
